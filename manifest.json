@@ -1,0 +1,35 @@
+{
+    "name": "Form Recorder",
+    "action": {},
+    "manifest_version": 3,
+    "version": "0.1",
+    "description": "Record your Google Form",
+    "permissions": [
+      "activeTab",
+      "webRequest",
+      "tabs",
+      "activeTab",
+      "storage"
+    ],
+    "host_permissions": [
+      "*://docs.google.com/*"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": [
+          "*://docs.google.com/*"
+        ],
+        "all_frames": true,
+        "js": ["content-script.js"]
+      }
+    ],
+    "web_accessible_resources": [
+      {
+        "resources": [ "content-script.js" ],
+        "matches": [ "*://docs.google.com/*" ]
+      }
+    ]
+  }
